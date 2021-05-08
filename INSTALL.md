@@ -15,7 +15,7 @@ on Windows.
 
 ###  Create Gitea OAuth application
 
-1. Login into your Gitea/Gitea Enterprise account
+1. Login into your Gitea account
 2. Navigate to **_Settings_**
 !["Gitea settings"][1]
 
@@ -75,7 +75,7 @@ on Windows.
 [4]: images/save_application.png   "Save application"
 [5]: images/application_info.png   "Gitea application info"
 [6]: images/gocd_auth_config.gif  "Create authorization configuration"
-[7]: images/nav_access_tokens.png "Gitea Access Tokens"
+[7]: images/nav_applications.png "Gitea Access Tokens"
 [8]: images/fill_access_token_details.png "Fill access token details"
 [9]: images/save_token.png "Save token"
 [10]: images/token_info.png "Gitea personal accesss token info"

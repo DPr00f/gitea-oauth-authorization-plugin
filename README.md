@@ -1,6 +1,12 @@
+# Based on
+
+This plugin is based on [gitlab-oauth-authorization-plugin](https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin)
+
+It was simply changed to work with Gitea instead of GitLab
+
 # Gitea OAuth authorization plugin for GoCD
 
-The plugin allows user to login in GoCD using Gitea(or Gitea Enterprise). It also supports authorization, which can be used by server admin to map GoCD roles with Gitea projects or groups with access level.
+The plugin allows user to login in GoCD using Gitea.
 
 # Installation
 
