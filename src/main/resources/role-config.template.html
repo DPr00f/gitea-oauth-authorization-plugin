@@ -15,13 +15,13 @@
   -->
 
 <div class="form_item_block">
-    <label ng-class="{'is-invalid-label': GOINPUTNAME[Groups].$error.server}">GitLab groups <small>(Enter in <strong>Groups-Name: Master, Developer,Owner</strong> format)</small>:</label>
+    <label ng-class="{'is-invalid-label': GOINPUTNAME[Groups].$error.server}">Gitea groups <small>(Enter in <strong>Groups-Name: Master, Developer,Owner</strong> format)</small>:</label>
     <textarea ng-class="{'is-invalid-input': GOINPUTNAME[Groups].$error.server}" ng-model="Groups" ng-required="true" rows="5"></textarea>
     <span class="form_error form-error" ng-class="{'is-visible': GOINPUTNAME[Groups].$error.server}" ng-show="GOINPUTNAME[Groups].$error.server">{{GOINPUTNAME[Groups].$error.server}}</span>
 </div>
 
 <div class="form_item_block">
-    <label ng-class="{'is-invalid-label': GOINPUTNAME[Projects].$error.server}">GitLab projects <small>(Enter in <strong>Project-Name: Master, Developer</strong> format)</small>:</label>
+    <label ng-class="{'is-invalid-label': GOINPUTNAME[Projects].$error.server}">Gitea projects <small>(Enter in <strong>Project-Name: Master, Developer</strong> format)</small>:</label>
     <textarea ng-class="{'is-invalid-input': GOINPUTNAME[Projects].$error.server}" ng-model="Projects" ng-required="true" rows="5"></textarea>
     <span class="form_error form-error" ng-class="{'is-visible': GOINPUTNAME[Projects].$error.server}" ng-show="GOINPUTNAME[Projects].$error.server">{{GOINPUTNAME[Projects].$error.server}}</span>
 </div>

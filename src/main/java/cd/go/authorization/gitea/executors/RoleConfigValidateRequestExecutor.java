@@ -31,9 +31,9 @@ public class RoleConfigValidateRequestExecutor implements RequestExecutor {
 
     @Override
     public GoPluginApiResponse execute() throws Exception {
-        final ValidationResult validationResult = new MetadataValidator().validate(request.gitLabRoleConfiguration());
+        final ValidationResult validationResult = new MetadataValidator().validate(request.giteaRoleConfiguration());
 
-        if (!request.gitLabRoleConfiguration().hasConfiguration()) {
+        if (!request.giteaRoleConfiguration().hasConfiguration()) {
             validationResult.addError("Groups", "At least one of the fields(Groups, Projects or users) should be specified.");
             validationResult.addError("Projects", "At least one of the fields(Groups, Projects or users) should be specified.");
             validationResult.addError("Users", "At least one of the fields(Groups, Projects or users) should be specified.");

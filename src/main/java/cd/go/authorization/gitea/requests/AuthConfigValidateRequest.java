@@ -17,22 +17,22 @@
 package cd.go.authorization.gitea.requests;
 
 import cd.go.authorization.gitea.executors.AuthConfigValidateRequestExecutor;
-import cd.go.authorization.gitea.models.GitLabConfiguration;
+import cd.go.authorization.gitea.models.GiteaConfiguration;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 
 public class AuthConfigValidateRequest extends Request {
-    private final GitLabConfiguration gitLabConfiguration;
+    private final GiteaConfiguration giteaConfiguration;
 
-    public AuthConfigValidateRequest(GitLabConfiguration gitLabConfiguration) {
-        this.gitLabConfiguration = gitLabConfiguration;
+    public AuthConfigValidateRequest(GiteaConfiguration giteaConfiguration) {
+        this.giteaConfiguration = giteaConfiguration;
     }
 
     public static final AuthConfigValidateRequest from(GoPluginApiRequest apiRequest) {
-        return new AuthConfigValidateRequest(GitLabConfiguration.fromJSON(apiRequest.requestBody()));
+        return new AuthConfigValidateRequest(GiteaConfiguration.fromJSON(apiRequest.requestBody()));
     }
 
-    public GitLabConfiguration gitLabConfiguration() {
-        return gitLabConfiguration;
+    public GiteaConfiguration giteaConfiguration() {
+        return giteaConfiguration;
     }
 
     @Override

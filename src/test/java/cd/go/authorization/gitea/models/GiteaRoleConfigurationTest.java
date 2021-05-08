@@ -16,23 +16,21 @@
 
 package cd.go.authorization.gitea.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import org.junit.Test;
 
-public class AuthConfig {
-    @Expose
-    @SerializedName("id")
-    private String id;
+import static java.util.Arrays.asList;
+import static org.hamcrest.Matchers.hasEntry;
+import static org.junit.Assert.assertThat;
 
-    @Expose
-    @SerializedName("configuration")
-    private GiteaConfiguration giteaConfiguration;
+public class GiteaRoleConfigurationTest {
 
-    public String getId() {
-        return id;
-    }
+    @Test
+    public void shouldDeserializeRoleConfig() throws Exception {
+        final GiteaRoleConfiguration giteaRoleConfiguration = GiteaRoleConfiguration.fromJSON("{\n" +
+                "  \"Groups\": \"group-1: guest, owner\",\n" +
+                "  \"Projects\": \"project-1:developer\"" +
+                "}");
 
-    public GiteaConfiguration giteaConfiguration() {
-        return giteaConfiguration;
+        assertThat(giteaRoleConfiguration.groups(), hasEntry("group-1", asList("guest", "owner")));
     }
 }

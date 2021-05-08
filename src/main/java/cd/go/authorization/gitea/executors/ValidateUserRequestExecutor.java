@@ -16,12 +16,12 @@
 
 package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitea.client.models.GitLabUser;
+import cd.go.authorization.gitea.client.models.GiteaUser;
 import cd.go.authorization.gitea.requests.ValidateUserRequest;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
-import static cd.go.authorization.gitea.GitLabPlugin.LOG;
+import static cd.go.authorization.gitea.GiteaPlugin.LOG;
 import static java.lang.String.format;
 
 public class ValidateUserRequestExecutor implements RequestExecutor {
@@ -33,10 +33,10 @@ public class ValidateUserRequestExecutor implements RequestExecutor {
 
     @Override
     public GoPluginApiResponse execute() throws Exception {
-        GitLabUser user = request.getAuthConfig().gitLabConfiguration().gitLabClient().user(request.getAuthConfig().gitLabConfiguration().personalAccessToken());
+        GiteaUser user = request.getAuthConfig().giteaConfiguration().giteaClient().user(request.getAuthConfig().giteaConfiguration().personalAccessToken());
         if (user == null) {
-            LOG.error(format("[Is Valid User] User %s does not exist in GitLab.", request.getUsername()));
-            return DefaultGoPluginApiResponse.error(format("User '%s' does not exist in GitLab.", request.getUsername()));
+            LOG.error(format("[Is Valid User] User %s does not exist in Gitea.", request.getUsername()));
+            return DefaultGoPluginApiResponse.error(format("User '%s' does not exist in Gitea.", request.getUsername()));
         } else {
             LOG.info(format("[Is Valid User] %s is valid user.", request.getUsername()));
             return DefaultGoPluginApiResponse.success("");

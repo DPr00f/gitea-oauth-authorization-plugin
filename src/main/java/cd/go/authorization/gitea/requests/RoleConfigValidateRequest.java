@@ -18,14 +18,14 @@ package cd.go.authorization.gitea.requests;
 
 import cd.go.authorization.gitea.executors.RequestExecutor;
 import cd.go.authorization.gitea.executors.RoleConfigValidateRequestExecutor;
-import cd.go.authorization.gitea.models.GitLabRoleConfiguration;
+import cd.go.authorization.gitea.models.GiteaRoleConfiguration;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 
 public class RoleConfigValidateRequest extends Request {
-    private final GitLabRoleConfiguration gitLabRoleConfiguration;
+    private final GiteaRoleConfiguration giteaRoleConfiguration;
 
-    public RoleConfigValidateRequest(GitLabRoleConfiguration gitLabRoleConfiguration) {
-        this.gitLabRoleConfiguration = gitLabRoleConfiguration;
+    public RoleConfigValidateRequest(GiteaRoleConfiguration giteaRoleConfiguration) {
+        this.giteaRoleConfiguration = giteaRoleConfiguration;
     }
 
     @Override
@@ -33,12 +33,12 @@ public class RoleConfigValidateRequest extends Request {
         return new RoleConfigValidateRequestExecutor(this);
     }
 
-    public GitLabRoleConfiguration gitLabRoleConfiguration() {
-        return gitLabRoleConfiguration;
+    public GiteaRoleConfiguration giteaRoleConfiguration() {
+        return giteaRoleConfiguration;
     }
 
     public static final RoleConfigValidateRequest from(GoPluginApiRequest apiRequest) {
-        return new RoleConfigValidateRequest(GitLabRoleConfiguration.fromJSON(apiRequest.requestBody()));
+        return new RoleConfigValidateRequest(GiteaRoleConfiguration.fromJSON(apiRequest.requestBody()));
     }
 
 }

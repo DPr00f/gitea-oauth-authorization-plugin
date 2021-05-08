@@ -17,14 +17,14 @@
 package cd.go.authorization.gitea.executors;
 
 import cd.go.authorization.gitea.exceptions.NoAuthorizationConfigurationException;
-import cd.go.authorization.gitea.models.GitLabConfiguration;
+import cd.go.authorization.gitea.models.GiteaConfiguration;
 import cd.go.authorization.gitea.requests.GetAuthorizationServerUrlRequest;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
 import java.util.Collections;
 
-import static cd.go.authorization.gitea.GitLabPlugin.LOG;
+import static cd.go.authorization.gitea.GiteaPlugin.LOG;
 import static cd.go.authorization.gitea.utils.Util.GSON;
 
 public class GetAuthorizationServerUrlRequestExecutor implements RequestExecutor {
@@ -41,9 +41,9 @@ public class GetAuthorizationServerUrlRequestExecutor implements RequestExecutor
 
         LOG.debug("[Get Authorization Server URL] Getting authorization server url from auth config.");
 
-        final GitLabConfiguration gitLabConfiguration = request.authConfigs().get(0).gitLabConfiguration();
+        final GiteaConfiguration giteaConfiguration = request.authConfigs().get(0).giteaConfiguration();
 
-        String authorizationServerUrl = gitLabConfiguration.gitLabClient().authorizationServerUrl(request.callbackUrl());
+        String authorizationServerUrl = giteaConfiguration.giteaClient().authorizationServerUrl(request.callbackUrl());
 
         return DefaultGoPluginApiResponse.success(GSON.toJson(Collections.singletonMap("authorization_server_url", authorizationServerUrl)));
     }

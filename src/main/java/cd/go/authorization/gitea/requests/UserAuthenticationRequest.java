@@ -18,7 +18,7 @@ package cd.go.authorization.gitea.requests;
 
 import cd.go.authorization.gitea.executors.UserAuthenticationRequestExecutor;
 import cd.go.authorization.gitea.models.AuthConfig;
-import cd.go.authorization.gitea.models.GitLabRole;
+import cd.go.authorization.gitea.models.GiteaRole;
 import cd.go.authorization.gitea.models.TokenInfo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -37,7 +37,7 @@ public class UserAuthenticationRequest extends Request {
 
     @Expose
     @SerializedName("role_configs")
-    private List<GitLabRole> roles;
+    private List<GiteaRole> roles;
 
     UserAuthenticationRequest() {
     }
@@ -50,7 +50,7 @@ public class UserAuthenticationRequest extends Request {
         return authConfigs;
     }
 
-    public List<GitLabRole> roles() {
+    public List<GiteaRole> roles() {
         return roles;
     }
 

@@ -16,7 +16,7 @@
 
 package cd.go.authorization.gitea.models;
 
-import cd.go.authorization.gitea.client.models.GitLabUser;
+import cd.go.authorization.gitea.client.models.GiteaUser;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -44,7 +44,7 @@ public class User {
         this.emailId = emailId == null ? null : emailId.toLowerCase().trim();
     }
 
-    public User(GitLabUser user) {
+    public User(GiteaUser user) {
         this(user.getUsername(), user.getName(), user.getEmail());
     }
 

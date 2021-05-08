@@ -19,7 +19,7 @@ package cd.go.authorization.gitea.executors;
 
 import cd.go.authorization.gitea.annotation.MetadataValidator;
 import cd.go.authorization.gitea.annotation.ValidationResult;
-import cd.go.authorization.gitea.models.GitLabConfiguration;
+import cd.go.authorization.gitea.models.GiteaConfiguration;
 import cd.go.authorization.gitea.requests.AuthConfigValidateRequest;
 import cd.go.authorization.gitea.utils.Util;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
@@ -34,10 +34,10 @@ public class AuthConfigValidateRequestExecutor implements RequestExecutor {
     }
 
     public GoPluginApiResponse execute() throws Exception {
-        final GitLabConfiguration gitLabConfiguration = request.gitLabConfiguration();
-        final ValidationResult validationResult = new MetadataValidator().validate(gitLabConfiguration);
+        final GiteaConfiguration giteaConfiguration = request.giteaConfiguration();
+        final ValidationResult validationResult = new MetadataValidator().validate(giteaConfiguration);
 
-        if (Util.isBlank(gitLabConfiguration.giteaUrl())) {
+        if (Util.isBlank(giteaConfiguration.giteaUrl())) {
             validationResult.addError("GiteaUrl", "GiteaUrl must not be blank.");
         }
 

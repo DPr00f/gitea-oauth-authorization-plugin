@@ -18,7 +18,7 @@ package cd.go.authorization.gitea.executors;
 
 import cd.go.authorization.gitea.annotation.MetadataHelper;
 import cd.go.authorization.gitea.annotation.ProfileMetadata;
-import cd.go.authorization.gitea.models.GitLabRoleConfiguration;
+import cd.go.authorization.gitea.models.GiteaRoleConfiguration;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
@@ -30,7 +30,7 @@ import static cd.go.authorization.gitea.utils.Util.GSON;
 public class GetRoleConfigMetadataRequestExecutor implements RequestExecutor {
 
     public GoPluginApiResponse execute() throws Exception {
-        final List<ProfileMetadata> authConfigMetadata = MetadataHelper.getMetadata(GitLabRoleConfiguration.class);
+        final List<ProfileMetadata> authConfigMetadata = MetadataHelper.getMetadata(GiteaRoleConfiguration.class);
         return DefaultGoPluginApiResponse.success(GSON.toJson(authConfigMetadata));
     }
 }

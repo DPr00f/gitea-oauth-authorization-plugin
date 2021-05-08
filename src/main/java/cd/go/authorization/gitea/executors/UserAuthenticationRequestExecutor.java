@@ -16,9 +16,9 @@
 
 package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitea.GitLabAuthenticator;
-import cd.go.authorization.gitea.GitLabAuthorizer;
-import cd.go.authorization.gitea.client.models.GitLabUser;
+import cd.go.authorization.gitea.GiteaAuthenticator;
+import cd.go.authorization.gitea.GiteaAuthorizer;
+import cd.go.authorization.gitea.client.models.GiteaUser;
 import cd.go.authorization.gitea.exceptions.NoAuthorizationConfigurationException;
 import cd.go.authorization.gitea.models.AuthConfig;
 import cd.go.authorization.gitea.models.User;
@@ -34,17 +34,17 @@ import static com.thoughtworks.go.plugin.api.response.DefaultGoApiResponse.SUCCE
 
 public class UserAuthenticationRequestExecutor implements RequestExecutor {
     private final UserAuthenticationRequest request;
-    private final GitLabAuthenticator gitLabAuthenticator;
-    private final GitLabAuthorizer gitLabAuthorizer;
+    private final GiteaAuthenticator giteaAuthenticator;
+    private final GiteaAuthorizer giteaAuthorizer;
 
     public UserAuthenticationRequestExecutor(UserAuthenticationRequest request) {
-        this(request, new GitLabAuthenticator(), new GitLabAuthorizer());
+        this(request, new GiteaAuthenticator(), new GiteaAuthorizer());
     }
 
-    UserAuthenticationRequestExecutor(UserAuthenticationRequest request, GitLabAuthenticator gitLabAuthenticator, GitLabAuthorizer gitLabAuthorizer) {
+    UserAuthenticationRequestExecutor(UserAuthenticationRequest request, GiteaAuthenticator giteaAuthenticator, GiteaAuthorizer giteaAuthorizer) {
         this.request = request;
-        this.gitLabAuthenticator = gitLabAuthenticator;
-        this.gitLabAuthorizer = gitLabAuthorizer;
+        this.giteaAuthenticator = giteaAuthenticator;
+        this.giteaAuthorizer = giteaAuthorizer;
     }
 
     @Override
@@ -54,12 +54,12 @@ public class UserAuthenticationRequestExecutor implements RequestExecutor {
         }
 
         final AuthConfig authConfig = request.authConfigs().get(0);
-        final GitLabUser gitLabUser = gitLabAuthenticator.authenticate(request.tokenInfo(), authConfig);
+        final GiteaUser giteaUser = giteaAuthenticator.authenticate(request.tokenInfo(), authConfig);
 
         Map<String, Object> userMap = new HashMap<>();
-        if (gitLabUser != null) {
-            userMap.put("user", new User(gitLabUser));
-            userMap.put("roles", gitLabAuthorizer.authorize(gitLabUser, authConfig, request.roles()));
+        if (giteaUser != null) {
+            userMap.put("user", new User(giteaUser));
+            userMap.put("roles", giteaAuthorizer.authorize(giteaUser, authConfig, request.roles()));
         }
 
         DefaultGoPluginApiResponse response = new DefaultGoPluginApiResponse(SUCCESS_RESPONSE_CODE, GSON.toJson(userMap));

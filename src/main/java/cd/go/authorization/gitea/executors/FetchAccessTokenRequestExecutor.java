@@ -18,7 +18,7 @@ package cd.go.authorization.gitea.executors;
 
 import cd.go.authorization.gitea.exceptions.NoAuthorizationConfigurationException;
 import cd.go.authorization.gitea.models.AuthConfig;
-import cd.go.authorization.gitea.models.GitLabConfiguration;
+import cd.go.authorization.gitea.models.GiteaConfiguration;
 import cd.go.authorization.gitea.models.TokenInfo;
 import cd.go.authorization.gitea.requests.FetchAccessTokenRequest;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
@@ -48,9 +48,9 @@ public class FetchAccessTokenRequestExecutor implements RequestExecutor {
         }
 
         final AuthConfig authConfig = request.authConfigs().get(0);
-        final GitLabConfiguration gitLabConfiguration = authConfig.gitLabConfiguration();
+        final GiteaConfiguration giteaConfiguration = authConfig.giteaConfiguration();
 
-        final TokenInfo tokenInfo = gitLabConfiguration.gitLabClient().fetchAccessToken(request.requestParameters().get("code"));
+        final TokenInfo tokenInfo = giteaConfiguration.giteaClient().fetchAccessToken(request.requestParameters().get("code"));
 
         return DefaultGoPluginApiResponse.success(tokenInfo.toJSON());
     }

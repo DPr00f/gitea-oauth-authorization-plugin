@@ -18,21 +18,21 @@ package cd.go.authorization.gitea.requests;
 
 import cd.go.authorization.gitea.executors.RequestExecutor;
 import cd.go.authorization.gitea.executors.VerifyConnectionRequestExecutor;
-import cd.go.authorization.gitea.models.GitLabConfiguration;
+import cd.go.authorization.gitea.models.GiteaConfiguration;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 
 public class VerifyConnectionRequest extends Request {
-    private final GitLabConfiguration configuration;
+    private final GiteaConfiguration configuration;
 
-    private VerifyConnectionRequest(GitLabConfiguration configuration) {
+    private VerifyConnectionRequest(GiteaConfiguration configuration) {
         this.configuration = configuration;
     }
 
     public static VerifyConnectionRequest from(GoPluginApiRequest apiRequest) {
-        return new VerifyConnectionRequest(GitLabConfiguration.fromJSON(apiRequest.requestBody()));
+        return new VerifyConnectionRequest(GiteaConfiguration.fromJSON(apiRequest.requestBody()));
     }
 
-    public GitLabConfiguration gitLabConfiguration() {
+    public GiteaConfiguration giteaConfiguration() {
         return configuration;
     }
 

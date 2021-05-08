@@ -44,7 +44,7 @@ public class VerifyConnectionRequestExecutor implements RequestExecutor {
     }
 
     private ValidationResult validate() {
-        return new MetadataValidator().validate(request.gitLabConfiguration());
+        return new MetadataValidator().validate(request.giteaConfiguration());
     }
 
     private GoPluginApiResponse successResponse() {

@@ -14,25 +14,18 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitea.models;
+package cd.go.authorization.gitea;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import cd.go.authorization.gitea.client.models.GiteaUser;
+import cd.go.authorization.gitea.models.AuthConfig;
+import cd.go.authorization.gitea.models.TokenInfo;
 
-public class AuthConfig {
-    @Expose
-    @SerializedName("id")
-    private String id;
+import java.io.IOException;
 
-    @Expose
-    @SerializedName("configuration")
-    private GiteaConfiguration giteaConfiguration;
+public class GiteaAuthenticator {
 
-    public String getId() {
-        return id;
+    public GiteaUser authenticate(TokenInfo tokenInfo, AuthConfig authConfig) throws IOException {
+        return authConfig.giteaConfiguration().giteaClient().user(tokenInfo);
     }
 
-    public GiteaConfiguration giteaConfiguration() {
-        return giteaConfiguration;
-    }
 }

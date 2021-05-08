@@ -24,7 +24,7 @@ gocdPlugin {
   name = 'Gitea OAuth authorization plugin'
   description = 'Gitea OAuth authorization plugin for GoCD'
   vendorName = 'ThoughtWorks, Inc.'
-  vendorUrl = 'https://github.com/gocd-contrib/gitea-oauth-authorization-plugin'
+  vendorUrl = 'https://github.com/dpr00f/gitea-oauth-authorization-plugin'
 
   githubRepo {
     owner = System.getenv('GITHUB_USER') ?: 'bob'

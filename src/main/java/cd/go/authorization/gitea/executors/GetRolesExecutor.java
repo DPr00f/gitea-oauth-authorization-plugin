@@ -16,29 +16,29 @@
 
 package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitea.GitLabAuthorizer;
-import cd.go.authorization.gitea.client.models.GitLabUser;
+import cd.go.authorization.gitea.GiteaAuthorizer;
+import cd.go.authorization.gitea.client.models.GiteaUser;
 import cd.go.authorization.gitea.requests.GetRolesRequest;
 import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
 import java.util.List;
 
-import static cd.go.authorization.gitea.GitLabPlugin.LOG;
+import static cd.go.authorization.gitea.GiteaPlugin.LOG;
 import static cd.go.authorization.gitea.utils.Util.GSON;
 import static java.lang.String.format;
 
 public class GetRolesExecutor implements RequestExecutor {
     private final GetRolesRequest request;
-    private final GitLabAuthorizer gitLabAuthorizer;
+    private final GiteaAuthorizer giteaAuthorizer;
 
     public GetRolesExecutor(GetRolesRequest request) {
-        this(request, new GitLabAuthorizer());
+        this(request, new GiteaAuthorizer());
     }
 
-    GetRolesExecutor(GetRolesRequest request, GitLabAuthorizer gitLabAuthorizer) {
+    GetRolesExecutor(GetRolesRequest request, GiteaAuthorizer giteaAuthorizer) {
         this.request = request;
-        this.gitLabAuthorizer = gitLabAuthorizer;
+        this.giteaAuthorizer = giteaAuthorizer;
     }
 
     @Override
@@ -48,14 +48,14 @@ public class GetRolesExecutor implements RequestExecutor {
             return DefaultGoPluginApiResponse.success("[]");
         }
 
-        GitLabUser user = request.getAuthConfig().gitLabConfiguration().gitLabClient().user(request.getAuthConfig().gitLabConfiguration().personalAccessToken());
+        GiteaUser user = request.getAuthConfig().giteaConfiguration().giteaClient().user(request.getAuthConfig().giteaConfiguration().personalAccessToken());
 
         if (user == null) {
-            LOG.error(format("[Get User Roles] User %s does not exist in GitLab.", request.getUsername()));
+            LOG.error(format("[Get User Roles] User %s does not exist in Gitea.", request.getUsername()));
             return DefaultGoPluginApiResponse.error("");
         }
 
-        List<String> roles = gitLabAuthorizer.authorize(user, request.getAuthConfig(), request.getRoles());
+        List<String> roles = giteaAuthorizer.authorize(user, request.getAuthConfig(), request.getRoles());
 
         LOG.debug(format("[Get User Roles] User %s has %s roles.", request.getUsername(), roles));
         return DefaultGoPluginApiResponse.success(GSON.toJson(roles));

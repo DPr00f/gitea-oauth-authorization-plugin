@@ -16,9 +16,9 @@
 
 package cd.go.authorization.gitea;
 
-import cd.go.authorization.gitea.client.GitLabClient;
-import cd.go.authorization.gitea.client.models.GitLabProject;
-import cd.go.authorization.gitea.client.models.GitLabUser;
+import cd.go.authorization.gitea.client.GiteaClient;
+import cd.go.authorization.gitea.client.models.GiteaProject;
+import cd.go.authorization.gitea.client.models.GiteaUser;
 import cd.go.authorization.gitea.client.models.MembershipInfo;
 import cd.go.authorization.gitea.models.TokenInfo;
 
@@ -27,39 +27,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static cd.go.authorization.gitea.GitLabPlugin.LOG;
+import static cd.go.authorization.gitea.GiteaPlugin.LOG;
 import static java.text.MessageFormat.format;
 
 public class ProjectMembershipChecker {
 
-    public boolean memberOfAtLeastOneProject(GitLabUser gitLabUser, String personalAccessToken, GitLabClient gitLabClient, List<GitLabProject> projectsFromGitLabForAUser, Map<String, List<String>> projectsFromRole) throws IOException {
-        final List<GitLabProject> matchingProjects = filterGroupBasedOnRoleConfiguration(projectsFromGitLabForAUser, projectsFromRole);
+    public boolean memberOfAtLeastOneProject(GiteaUser giteaUser, String personalAccessToken, GiteaClient giteaClient, List<GiteaProject> projectsFromGiteaForAUser, Map<String, List<String>> projectsFromRole) throws IOException {
+        final List<GiteaProject> matchingProjects = filterGroupBasedOnRoleConfiguration(projectsFromGiteaForAUser, projectsFromRole);
 
-        for (GitLabProject gitLabProject : matchingProjects) {
-            final List<String> accessLevels = projectsFromRole.get(gitLabProject.getName());
+        for (GiteaProject giteaProject : matchingProjects) {
+            final List<String> accessLevels = projectsFromRole.get(giteaProject.getName());
 
             if (accessLevels == null || accessLevels.isEmpty()) {
-                LOG.info(format("User `{0}` is member of `{1}` project.", gitLabUser.getUsername(), gitLabProject.getName()));
+                LOG.info(format("User `{0}` is member of `{1}` project.", giteaUser.getUsername(), giteaProject.getName()));
                 return true;
             }
 
-            final MembershipInfo membershipInfo = gitLabClient.projectMembershipInfo(personalAccessToken, gitLabProject.getId(), gitLabUser.getId());
+            final MembershipInfo membershipInfo = giteaClient.projectMembershipInfo(personalAccessToken, giteaProject.getId(), giteaUser.getId());
 
             if (membershipInfo.getAccessLevel() != null && accessLevels.contains(membershipInfo.getAccessLevel().toString().toLowerCase())) {
-                LOG.info(format("User `{0}` is member of `{1}` project with access level `{2}`.", gitLabUser.getUsername(), gitLabProject.getName(), membershipInfo.getAccessLevel()));
+                LOG.info(format("User `{0}` is member of `{1}` project with access level `{2}`.", giteaUser.getUsername(), giteaProject.getName(), membershipInfo.getAccessLevel()));
                 return true;
             }
         }
         return false;
     }
 
-    private List<GitLabProject> filterGroupBasedOnRoleConfiguration(List<GitLabProject> projectsFromGitLab, Map<String, List<String>> projectsFromRole) throws IOException {
-        final List<GitLabProject> gitLabProjects = new ArrayList<>();
-        for (GitLabProject projectFromGitLab : projectsFromGitLab) {
-            if (projectsFromRole.containsKey(projectFromGitLab.getName())) {
-                gitLabProjects.add(projectFromGitLab);
+    private List<GiteaProject> filterGroupBasedOnRoleConfiguration(List<GiteaProject> projectsFromGitea, Map<String, List<String>> projectsFromRole) throws IOException {
+        final List<GiteaProject> giteaProjects = new ArrayList<>();
+        for (GiteaProject projectFromGitea : projectsFromGitea) {
+            if (projectsFromRole.containsKey(projectFromGitea.getName())) {
+                giteaProjects.add(projectFromGitea);
             }
         }
-        return gitLabProjects;
+        return giteaProjects;
     }
 }

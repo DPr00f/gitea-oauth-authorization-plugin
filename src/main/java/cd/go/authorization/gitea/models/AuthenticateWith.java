@@ -19,8 +19,8 @@ package cd.go.authorization.gitea.models;
 import com.google.gson.annotations.SerializedName;
 
 public enum AuthenticateWith {
-    @SerializedName("GitLab")
+    @SerializedName("Gitea")
     GITLAB,
-    @SerializedName("GitLabEnterprise")
+    @SerializedName("GiteaEnterprise")
     GITLAB_ENTERPRISE
 }
