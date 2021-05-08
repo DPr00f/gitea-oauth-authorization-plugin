@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.requests;
+package cd.go.authorization.gitea.requests;
 
-import cd.go.authorization.gitlab.executors.VerifyConnectionRequestExecutor;
-import cd.go.authorization.gitlab.models.AuthenticateWith;
-import cd.go.authorization.gitlab.models.GitLabConfiguration;
+import cd.go.authorization.gitea.executors.VerifyConnectionRequestExecutor;
+import cd.go.authorization.gitea.models.GitLabConfiguration;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,8 +43,7 @@ public class VerifyConnectionRequestTest {
         String responseBody = "{\n" +
                 "  \"ApplicationId\": \"client-id\",\n" +
                 "  \"ClientSecret\": \"client-secret\",\n" +
-                "  \"AuthenticateWith\": \"GitLabEnterprise\",\n" +
-                "  \"GitLabEnterpriseUrl\": \"my-enterprise-url\"" +
+                "  \"GiteaUrl\": \"my-enterprise-url\"" +
                 "}";
 
         when(apiRequest.requestBody()).thenReturn(responseBody);
@@ -57,8 +55,7 @@ public class VerifyConnectionRequestTest {
 
         assertThat(gitLabConfiguration.applicationId(), is("client-id"));
         assertThat(gitLabConfiguration.clientSecret(), is("client-secret"));
-        assertThat(gitLabConfiguration.authenticateWith(), is(AuthenticateWith.GITLAB_ENTERPRISE));
-        assertThat(gitLabConfiguration.gitLabEnterpriseUrl(), is("my-enterprise-url"));
+        assertThat(gitLabConfiguration.giteaUrl(), is("my-enterprise-url"));
     }
 
 }

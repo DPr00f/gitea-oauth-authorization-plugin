@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-rootProject.name = 'gitlab-oauth-authorization-plugin'
+rootProject.name = 'gitea-oauth-authorization-plugin'

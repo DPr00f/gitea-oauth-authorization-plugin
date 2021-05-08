@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.requests;
+package cd.go.authorization.gitea.requests;
 
-import cd.go.authorization.gitlab.models.GitLabConfiguration;
+import cd.go.authorization.gitea.models.GitLabConfiguration;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import org.junit.Before;
 import org.junit.Test;

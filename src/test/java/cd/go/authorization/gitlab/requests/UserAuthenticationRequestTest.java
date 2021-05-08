@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.requests;
+package cd.go.authorization.gitea.requests;
 
-import cd.go.authorization.gitlab.executors.UserAuthenticationRequestExecutor;
-import cd.go.authorization.gitlab.models.AuthConfig;
-import cd.go.authorization.gitlab.models.TokenInfo;
+import cd.go.authorization.gitea.executors.UserAuthenticationRequestExecutor;
+import cd.go.authorization.gitea.models.AuthConfig;
+import cd.go.authorization.gitea.models.TokenInfo;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +53,6 @@ public class UserAuthenticationRequestTest {
                 "    {\n" +
                 "      \"id\": \"gitlab-config\",\n" +
                 "      \"configuration\": {\n" +
-                "        \"AuthenticateWith\": \"GitLab\",\n" +
                 "        \"ApplicationId\": \"client-id\",\n" +
                 "        \"ClientSecret\": \"client-secret\"\n" +
                 "      }\n" +

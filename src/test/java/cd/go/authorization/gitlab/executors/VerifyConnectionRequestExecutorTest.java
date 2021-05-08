@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.executors;
+package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitlab.models.GitLabConfiguration;
-import cd.go.authorization.gitlab.requests.VerifyConnectionRequest;
+import cd.go.authorization.gitea.models.GitLabConfiguration;
+import cd.go.authorization.gitea.requests.VerifyConnectionRequest;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,6 +60,10 @@ public class VerifyConnectionRequestExecutorTest {
                 "    {\n" +
                 "       \"key\":\"PersonalAccessToken\",\n" +
                 "       \"message\":\"PersonalAccessToken must not be blank.\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "       \"key\":\"GiteaUrl\",\n" +
+                "       \"message\":\"GiteaUrl must not be blank.\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"status\": \"validation-failed\"\n" +

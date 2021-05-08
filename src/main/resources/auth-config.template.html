@@ -85,32 +85,17 @@
 
     </style>
 
-
-    <div  class="form_item_block row" style="padding-top: 10px">
-        <div class="columns small-3 medium-2 larger-2">
-            <label>Authenticate with</label>
-        </div>
-        <div class="columns small-9 medium-10 larger-10" ng-init="AuthenticateWith = AuthenticateWith || 'GitLab'">
-            <input type="radio" ng-model="AuthenticateWith" value="GitLab" id="login-using-gitlab"/>
-            <label for="login-using-gitlab">GitLab</label>
-
-            <input type="radio" ng-model="AuthenticateWith" value="GitLabEnterprise" id="login-using-gitlab-enterprise"/>
-            <label for="login-using-gitlab-enterprise">GitLab Enterprise</label>
-            <span class="form_error form-error" ng-class="{'is-visible': GOINPUTNAME[AuthenticateWith].$error.server}" ng-show="GOINPUTNAME[AuthenticateWith].$error.server">{{GOINPUTNAME[AuthenticateWith].$error.server}}</span>
-        </div>
-    </div>
-
-    <div ng-show="AuthenticateWith == 'GitLabEnterprise'">
+    <div>
         <div class="form_item_block">
-            <label ng-class="{'is-invalid-label': GOINPUTNAME[GitLabEnterpriseUrl].$error.server}">GitLab Enterprise Base Url:<span class='asterix'>*</span>
+            <label ng-class="{'is-invalid-label': GOINPUTNAME[GiteaUrl].$error.server}">Gitea Base Url:<span class='asterix'>*</span>
                 <div class="tooltip-info">
                   <span class="tooltip-content">
-                    GitLab enterprise base url
+                    Gitea base url
                   </span>
                 </div>
             </label>
-            <input ng-class="{'is-invalid-input': GOINPUTNAME[GitLabEnterpriseUrl].$error.server}" type="text" ng-model="GitLabEnterpriseUrl" ng-required="true"/>
-            <span class="form_error form-error" ng-class="{'is-visible': GOINPUTNAME[GitLabEnterpriseUrl].$error.server}" ng-show="GOINPUTNAME[GitLabEnterpriseUrl].$error.server">{{GOINPUTNAME[GitLabEnterpriseUrl].$error.server}}</span>
+            <input ng-class="{'is-invalid-input': GOINPUTNAME[GiteaUrl].$error.server}" type="text" ng-model="GiteaUrl" ng-required="true"/>
+            <span class="form_error form-error" ng-class="{'is-visible': GOINPUTNAME[GiteaUrl].$error.server}" ng-show="GOINPUTNAME[GiteaUrl].$error.server">{{GOINPUTNAME[GiteaUrl].$error.server}}</span>
         </div>
     </div>
 
@@ -118,7 +103,7 @@
         <label ng-class="{'is-invalid-label': GOINPUTNAME[ApplicationId].$error.server}">Application ID:<span class='asterix'>*</span>
             <div class="tooltip-info">
               <span class="tooltip-content">
-                ID of your gitlab application.
+                ID of your gitea application.
               </span>
             </div>
         </label>

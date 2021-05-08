@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.executors;
+package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitlab.annotation.MetadataHelper;
-import cd.go.authorization.gitlab.models.GitLabConfiguration;
+import cd.go.authorization.gitea.annotation.MetadataHelper;
+import cd.go.authorization.gitea.models.GitLabConfiguration;
 import com.google.gson.Gson;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 import org.junit.Test;
@@ -59,16 +59,9 @@ public class GetAuthConfigMetadataRequestExecutorTest {
                 "    }\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"key\": \"AuthenticateWith\",\n" +
+                "    \"key\": \"GiteaUrl\",\n" +
                 "    \"metadata\": {\n" +
-                "      \"required\": false,\n" +
-                "      \"secure\": false\n" +
-                "    }\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"key\": \"GitLabEnterpriseUrl\",\n" +
-                "    \"metadata\": {\n" +
-                "      \"required\": false,\n" +
+                "      \"required\": true,\n" +
                 "      \"secure\": false\n" +
                 "    }\n" +
                 "  }," +

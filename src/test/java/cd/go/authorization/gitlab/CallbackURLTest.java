@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab;
+package cd.go.authorization.gitea;
 
 import org.junit.Test;
 

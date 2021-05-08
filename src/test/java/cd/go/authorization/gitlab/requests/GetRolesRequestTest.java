@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.requests;
+package cd.go.authorization.gitea.requests;
 
-import cd.go.authorization.gitlab.executors.GetRolesExecutor;
+import cd.go.authorization.gitea.executors.GetRolesExecutor;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,8 +39,7 @@ public class GetRolesRequestTest {
                 "    \"configuration\": {\n" +
                 "       \"ApplicationId\": \"client-id\",\n" +
                 "       \"ClientSecret\": \"client-secret\",\n" +
-                "       \"AuthenticateWith\": \"GitLabEnterprise\",\n" +
-                "       \"GitLabEnterpriseUrl\": \"my-enterprise-url\",\n" +
+                "       \"GiteaUrl\": \"my-enterprise-url\",\n" +
                 "       \"PersonalAccessToken\": \"Baz\"\n" +
                 "    },\n" +
                 "    \"id\": \"GitLab\"\n" +

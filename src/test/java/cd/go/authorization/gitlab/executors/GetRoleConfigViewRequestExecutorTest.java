@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.executors;
+package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitlab.annotation.MetadataHelper;
-import cd.go.authorization.gitlab.annotation.ProfileMetadata;
-import cd.go.authorization.gitlab.models.GitLabRoleConfiguration;
-import cd.go.authorization.gitlab.utils.Util;
+import cd.go.authorization.gitea.annotation.MetadataHelper;
+import cd.go.authorization.gitea.annotation.ProfileMetadata;
+import cd.go.authorization.gitea.models.GitLabRoleConfiguration;
+import cd.go.authorization.gitea.utils.Util;
 import com.google.gson.Gson;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 import org.jsoup.Jsoup;

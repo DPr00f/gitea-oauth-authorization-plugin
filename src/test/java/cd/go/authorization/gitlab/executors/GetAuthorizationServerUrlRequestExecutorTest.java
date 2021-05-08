@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.executors;
+package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitlab.client.GitLabClient;
-import cd.go.authorization.gitlab.exceptions.NoAuthorizationConfigurationException;
-import cd.go.authorization.gitlab.models.AuthConfig;
-import cd.go.authorization.gitlab.models.GitLabConfiguration;
-import cd.go.authorization.gitlab.requests.GetAuthorizationServerUrlRequest;
+import cd.go.authorization.gitea.client.GitLabClient;
+import cd.go.authorization.gitea.exceptions.NoAuthorizationConfigurationException;
+import cd.go.authorization.gitea.models.AuthConfig;
+import cd.go.authorization.gitea.models.GitLabConfiguration;
+import cd.go.authorization.gitea.requests.GetAuthorizationServerUrlRequest;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 import org.junit.Before;
 import org.junit.Rule;

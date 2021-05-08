@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab;
+package cd.go.authorization.gitea;
 
-import cd.go.authorization.gitlab.client.GitLabClient;
-import cd.go.authorization.gitlab.client.models.GitLabGroup;
-import cd.go.authorization.gitlab.client.models.GitLabProject;
-import cd.go.authorization.gitlab.client.models.GitLabUser;
-import cd.go.authorization.gitlab.models.*;
+import cd.go.authorization.gitea.client.GitLabClient;
+import cd.go.authorization.gitea.client.models.GitLabGroup;
+import cd.go.authorization.gitea.client.models.GitLabProject;
+import cd.go.authorization.gitea.client.models.GitLabUser;
+import cd.go.authorization.gitea.models.*;
 import org.junit.Before;
 import org.junit.Test;
 

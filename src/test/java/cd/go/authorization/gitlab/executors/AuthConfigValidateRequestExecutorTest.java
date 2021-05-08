@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.executors;
+package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitlab.requests.AuthConfigValidateRequest;
+import cd.go.authorization.gitea.requests.AuthConfigValidateRequest;
 import com.google.gson.Gson;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
@@ -57,6 +57,10 @@ public class AuthConfigValidateRequestExecutorTest {
                 "  {\n" +
                 "    \"key\": \"ClientSecret\",\n" +
                 "    \"message\": \"ClientSecret must not be blank.\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"key\": \"GiteaUrl\",\n" +
+                "    \"message\": \"GiteaUrl must not be blank.\"\n" +
                 "  }\n" +
                 "]";
 
@@ -64,10 +68,9 @@ public class AuthConfigValidateRequestExecutorTest {
     }
 
     @Test
-    public void shouldValidateGitLabEnterpriseUrl() throws Exception {
+    public void shouldValidateGiteaUrl() throws Exception {
         when(request.requestBody()).thenReturn("{\n" +
                 "  \"ApplicationId\": \"client-id\",\n" +
-                "  \"AuthenticateWith\": \"GitLabEnterprise\",\n" +
                 "  \"ClientSecret\": \"client-secret\",\n" +
                 "  \"PersonalAccessToken\":\"some-random-token\"" +
                 "}");
@@ -76,8 +79,8 @@ public class AuthConfigValidateRequestExecutorTest {
 
         String expectedJSON = "[\n" +
                 "  {\n" +
-                "    \"key\": \"GitLabEnterpriseUrl\",\n" +
-                "    \"message\": \"GitLabEnterpriseUrl must not be blank.\"\n" +
+                "    \"key\": \"GiteaUrl\",\n" +
+                "    \"message\": \"GiteaUrl must not be blank.\"\n" +
                 "  }\n" +
                 "]";
 

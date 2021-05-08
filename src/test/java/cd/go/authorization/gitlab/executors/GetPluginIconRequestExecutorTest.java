@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package cd.go.authorization.gitlab.executors;
+package cd.go.authorization.gitea.executors;
 
-import cd.go.authorization.gitlab.utils.Util;
+import cd.go.authorization.gitea.utils.Util;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 import org.junit.Test;
 
 import java.util.Base64;
 import java.util.HashMap;
 
-import static cd.go.authorization.gitlab.utils.Util.GSON;
+import static cd.go.authorization.gitea.utils.Util.GSON;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 

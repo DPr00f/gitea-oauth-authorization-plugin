@@ -18,17 +18,17 @@ apply plugin: 'java'
 apply from: "https://raw.githubusercontent.com/gocd/gocd-plugin-gradle-task-helpers/master/helper.gradle?_=${(int) (new Date().toInstant().epochSecond / 60)}"
 
 gocdPlugin {
-  id = 'cd.go.authorization.gitlab'
+  id = 'cd.go.authorization.gitea'
   pluginVersion = '2.1.0'
   goCdVersion = '20.9.0'
-  name = 'GitLab OAuth authorization plugin'
-  description = 'GitLab OAuth authorization plugin for GoCD'
+  name = 'Gitea OAuth authorization plugin'
+  description = 'Gitea OAuth authorization plugin for GoCD'
   vendorName = 'ThoughtWorks, Inc.'
-  vendorUrl = 'https://github.com/gocd-contrib/gitlab-oauth-authorization-plugin'
+  vendorUrl = 'https://github.com/gocd-contrib/gitea-oauth-authorization-plugin'
 
   githubRepo {
     owner = System.getenv('GITHUB_USER') ?: 'bob'
-    repo = 'gitlab-oauth-authorization-plugin'
+    repo = 'gitea-oauth-authorization-plugin'
     token = System.getenv('GITHUB_TOKEN') ?: 'bad-token'
   }
 

@@ -7,8 +7,8 @@
 
 ## Installation
 
-Copy the file `build/libs/gitlab-authorization-plugin-VERSION.jar` to the GoCD server under `${GO_SERVER_DIR}/plugins/external` 
-and restart the server. The `GO_SERVER_DIR` is usually `/var/lib/go-server` on Linux and `C:\Program Files\Go Server` 
+Copy the file `build/libs/gitlab-authorization-plugin-VERSION.jar` to the GoCD server under `${GO_SERVER_DIR}/plugins/external`
+and restart the server. The `GO_SERVER_DIR` is usually `/var/lib/go-server` on Linux and `C:\Program Files\Go Server`
 on Windows.
 
 ## Configuration
@@ -24,11 +24,11 @@ on Windows.
 
 4. Fill the following details for application
     - Give a name to your application
-    - In `Redirect URI`, specify `https://your.goserver.url/go/plugin/cd.go.authorization.gitlab/authenticate`. 
+    - In `Redirect URI`, specify `https://your.goserver.url/go/plugin/cd.go.authorization.gitea/authenticate`.
     - In scopes, select `api`
-    
+
     !["Fill application details"][3]
-   
+
 5. Click **Save application**.
 !["Save application"][4]
 
@@ -66,7 +66,7 @@ on Windows.
     4. Specify **_Application ID_** and **_Client Secret_**
     5. Specify **_Token Value_**
     6. Save your configuration
-    
+
     ![Create authorization configuration][6]
 
 [1]: images/nav_settings.png    "GitLab settings"
